@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.trader__service {
+    width: 100%;
+    color: #fff;
+    font-size: 48px;
+    font-weight: bolder;
+    background: linear-gradient(
+        to right bottom,
+      rgb(78, 93, 116),
+      rgb(157, 167, 139),
+      rgba(156, 133, 144, 0.877)
+    );
+    padding: 20rem;
+}

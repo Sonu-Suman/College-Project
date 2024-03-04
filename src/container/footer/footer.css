@@ -1,0 +1,130 @@
+* {
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.trader_footer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background: linear-gradient(
+        to right bottom,
+      rgb(143, 158, 180),
+      rgb(157, 167, 139),
+      rgba(156, 133, 144, 0.877)
+    );
+}
+
+.trader_footer_section {
+    /* background: var(--color-bg); */
+    /* background: white; */
+    display: flex;
+    flex-direction: row;
+}
+
+.trader_footer_logo {
+    font-size: 48px;
+    text-decoration: underline;
+    font-style: var(--font-family);
+    margin: 5rem 5rem 1rem 1rem;
+}
+
+.trader_footer_section_for_many {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.trader_footer_links ,
+.trader_footer_company,
+.trader_footer_get_in_touch {
+    margin: 1rem 5rem 1rem 5rem;
+}
+
+.trader_footer_links h2,
+.trader_footer_company h2,
+.trader_footer_get_in_touch h2{
+    margin: 1rem;
+    font-weight: bolder;
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.trader_footer_links_section p,
+.trader_footer_company_section p, 
+.trader_footer_get_in_touch_section p {
+    color: #000;
+    margin-left: 1.25rem;
+    margin-bottom: 0.6rem;
+}
+
+.trader_footer_copyright {
+    font-weight: bold;
+    color: #321fa0;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 12px;
+}
+
+
+
+@media screen and (max-width: 1050px) {
+    .trader_footer_links h2,
+    .trader_footer_company h2,
+    .trader_footer_get_in_touch h2 {
+        font-size: 18px;
+        color: yellow;
+    }
+
+    .trader_footer_links_section p,
+    .trader_footer_company_section p, 
+    .trader_footer_get_in_touch_section p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .trader_footer_logo {
+        font-size: 26px;
+        margin: 10rem 0.6rem 3rem 0rem;
+    }
+
+    .trader_footer_logo h1 {
+        margin-left: 0.4rem;
+    }
+
+    .trader_footer_section_for_many {
+        margin-left: 2rem;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .trader_footer_links ,
+    .trader_footer_company,
+    .trader_footer_get_in_touch {
+        margin: 0rem;
+    }
+
+    .trader_footer_links h2,
+    .trader_footer_company h2,
+    .trader_footer_get_in_touch h2 {
+        font-size: 16px;
+        color: yellow;
+    }
+
+    .trader_footer_links_section p,
+    .trader_footer_company_section p, 
+    .trader_footer_get_in_touch_section p {
+        font-size: 14px;
+    }
+
+    .trader_footer_copyright {
+        font-size: 10px;
+    }
+}

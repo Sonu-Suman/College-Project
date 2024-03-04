@@ -1,0 +1,144 @@
+.trader__navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    background: rgba( 255, 255, 255, 0.35 );
+    /* position: fixed; */
+}
+
+.trader__navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.trader__navbar-links_logo {
+    margin-right: 10rem;
+}
+
+.trader__navbar-links_logo img {
+    width: 60px;
+    height: 55px;
+}
+
+.trader__navbar-links_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.trader__navbar-sign {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.trader__navbar-links_container p, 
+.trader__navbar-menu_container p,
+.trader__navbar-sign p {
+    color: #ece6e6;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 25px;
+    text-transform: capitalize;
+    margin: 0rem 2rem;
+    cursor: pointer;
+}
+
+.trader__navbar-sign p,
+.trader__navbar-menu_container-links-sign p {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.trader__navbar-menu {
+    margin-left: 1rem;
+
+    display: none;
+    position: relative;
+}
+
+.trader__navbar-menu svg {
+    cursor: pointer;
+}
+
+.trader__navbar-menu_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+
+    text-align: end;
+    background: var(--color-footer);
+    padding: 2rem;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    margin-top: 1rem;
+    min-width: 210px;
+    border-radius: 5px;
+    box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
+}
+
+.trader__navbar-menu_container p {
+    margin: 1rem 0;
+}
+
+.trader__navbar-menu_container-links_sign {
+    display: none;
+}
+
+/* ######################### For LARGE TABLET MODE ###################################### */
+@media screen and (max-width: 1050px) {
+    .trader__navbar-links_container {
+        display: none;
+    }
+
+    .trader__navbar-menu {
+        display: flex;
+    }
+}
+
+
+/* ######################### For TABLET MODE ###################################### */
+@media screen and (max-width: 700px) {
+    .trader__navbar {
+        padding: 2rem 4rem;
+    }
+
+}
+
+/* ######################### For MOBILE MODE #################################### */
+@media screen and (max-width: 550px) {
+    .trader__navbar {
+        padding: 1rem 2rem;
+    }
+
+    .trader__navbar-links_logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .trader__navbar-sign {
+        display: none;
+    }
+
+    .trader__navbar-menu_container {
+        top: 20px;
+    }
+
+    .trader__navbar-menu_container-links_sign {
+        display: block;
+    }
+}
