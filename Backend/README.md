@@ -1,8 +1,26 @@
-# Getting Started with Create React App
+# Getting Started with Face-recognition Project:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We are final year B.Tech students(20-24) in Government Engineering College Jamui. 
+Which is established and run by Bihar Government. In this project, we are making a 
+system which runs on face-recognition system and identify your identity through
+database and make your entry and out attendances in database. So that you and your college
+administrative track your attendances. And many more thing in this project..............
 
-## Available Scripts
+
+## Technology Used:
+
+### Front-end 
+ 1. React
+ 2. CSS
+ 3. JavaScript
+
+### Back-end
+ 1. Python
+ 2. Django
+ 3. Open-cv
+ 4. Database
+
+## Next
 
 In the project directory, you can run:
 
@@ -57,13 +75,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### Project Guide:
+  Dr. Brajesh Kumar (Head of Depart. - Electronics and Communication)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Team Name:
+ 1. Suman Kumar (Leader)
+ 2. Ankit Kumar
+ 3. Harsh Ayush
+ 4. Ankur Kumar
+ 
 
 ### `npm run build` fails to minify
 
