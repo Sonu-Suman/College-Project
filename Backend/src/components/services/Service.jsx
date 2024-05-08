@@ -62,7 +62,7 @@ const Service = () => {
 
       {/* ---------------------------------     For acceessing camera and showing the screen    -----------------------------------------------  */}
       <h1>Please Wait...... <br />We are loading your perfolie.</h1>
-      <video ref={videoRef} style={{ width:620, height:480 }}></video>
+      <video ref={videoRef} style={{ width:640, height:480 }}></video>
       <canvas ref={canvasRef} style={{ display: 'none' }} width={640} height={480}></canvas>
 
       {/* ---------------------------------          END        -----------------------------------------------  */}
