@@ -109,7 +109,12 @@
     align-items: flex-start;
 }
 
+.signup-form__bottom-access {
+    width: 16px;
+}
+
 .signup-form__submit {
+    color: white;
     margin-bottom: 2rem;
     margin-top: 1rem;
     display: flex;
@@ -117,9 +122,6 @@
     align-items: flex-end;
 }
 
-.signup-form__bottom-access {
-    width: 16px;
-}
 
 button {
     background-color: rgb(255, 153, 0);
@@ -128,6 +130,7 @@ button {
     font-size: 24px;
     font-weight: 600;
     border-radius: 2rem;
+    margin-bottom: 1rem;
 }
 
 
@@ -138,11 +141,11 @@ label {
 }
 
 input {
-    width: 400px;
+    width: 500px;
     height: 40px;
     padding: 1rem;
     font-weight: 600;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
     font-size: 18px;
     margin: 0.6rem;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, CTA, Service, SignUp, Login} from './components/index.js';
+import {Navbar, CTA, Service, SignUp, Login, CollegeSignUp, CameraRegister} from './components/index.js';
 import {Header, Footer} from './container/index.js';
 import './app.css';
 import {
@@ -27,6 +27,8 @@ const App = (props) => {
         <Route path='/' element={<Header />} />
         <Route path='/Service' element={<Service />} />
         <Route path='/SignUp' element={<SignUp />} />
+        <Route path='/CollegeRegistration' element={<CollegeSignUp />} />
+        <Route path='/CameraRegistration' element={<CameraRegister />} />
         <Route path='/Login' element={<Login />} />
       </Routes>
       <CTA />

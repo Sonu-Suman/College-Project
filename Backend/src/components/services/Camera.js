@@ -25,12 +25,12 @@ const Camera = () => {
     return (
         <>
             <Webcam 
-            ref={webcamRef}
-            audio={true}
-            screenshotFormat='image/png'
-            videoConstraints={videoConstraints} 
-            onUserMedia={onUserMedia}
-            mirrored={true} 
+                ref={webcamRef}
+                audio={true}
+                screenshotFormat='image/png'
+                videoConstraints={videoConstraints} 
+                onUserMedia={onUserMedia}
+                mirrored={true} 
             />
 
             <button onClick={capturePhoto}>Capture Photo</button>

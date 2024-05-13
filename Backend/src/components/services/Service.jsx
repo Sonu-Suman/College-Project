@@ -60,7 +60,7 @@ const Service = () => {
   return (
     <div className='trader__service'>
 
-      {/* ---------------------------------     For acceessing camera and showing the screen    -----------------------------------------------  */}
+      {/* ---------------------------------     For acceessing webcamera and livecasting the footage    ----------------------------  */}
       <h1>Please Wait...... <br />I am loading your data...........</h1>
       <video ref={videoRef} style={{ width:640, height:480 }}></video>
       <canvas ref={canvasRef} style={{ display: 'none' }} width={640} height={480}></canvas>

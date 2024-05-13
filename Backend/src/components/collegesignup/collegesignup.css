@@ -1,0 +1,115 @@
+* {
+    margin: 0rem;
+    padding: 0rem;
+}
+
+.college_registration-form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 2rem;
+    background: linear-gradient(
+        to right bottom,
+        rgba(26, 99, 63, 0.5),
+        rgba(114, 56, 104, 0.5)
+    );
+    align-items: center;
+}
+
+.college_registration-form__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.college_registration-form__top h1 {
+    font-size: 8rem;
+    text-align: center;
+    margin: 4rem 0;
+    text-decoration: aquamarine;
+}
+
+.college_registration-form__top-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.college_registration-form__top-field-labels {
+    display: flex;
+    flex-direction: column;
+}
+
+.college_registration-form__top-field-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.college_registration-form__middle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.college_registration-form__middle-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.college_registration-form__middle-left-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.college_registration-form__middle-left-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.college_registration-form__middle-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.college_registration-form__middle-right-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.college_registration-form__middle-right-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.college_registration-form__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.college_registration-form__bottom-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.college_registration-form__bottom-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.college_registration-form__submit {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
