@@ -4,6 +4,12 @@
 /node_modules
 /.pnp
 .pnp.js
+.idea
+./Backend/node_modules
+./Backend/.idea
+.Backend/database/config.json
+.Backend/database/credential.json
+.Backend/__pycache__
 
 # testing
 /coverage
@@ -23,3 +29,4 @@ yarn-debug.log*
 yarn-error.log*
 .env
 .node_modules
+
