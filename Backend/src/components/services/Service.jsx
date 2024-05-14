@@ -19,7 +19,7 @@ const Service = () => {
       if (videoElement && canvasElement) {
         context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
         const base64ImageData = canvasElement.toDataURL('image/jpeg');
-        console.log(base64ImageData); // Output the Base64 image data
+        // console.log(base64ImageData); // Output the Base64 image data
 
         const sendDataToBackend = async (data) => {
           try {

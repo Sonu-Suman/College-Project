@@ -1,9 +1,38 @@
-import React from 'react'
+import React, { useState} from 'react'
 import './signup.css'
 import { Link } from "react-router-dom"
+import axios from 'axios';
 
 
 const SignUp = () => {
+  const [imgS, setimgS] = useState();
+  const [imgS2, setimgS2] = useState();
+
+  // For receving data from python backend
+  let [received, receivedData] = useState(null);
+
+  // ----------------------------- for photo1 ------------------------
+  const convertIntoBase64 = (e) => {
+    // console.log(e.target.files);
+    const data = new FileReader();
+    
+    data.addEventListener('load', ()=>{
+      setimgS(data.result);
+    })
+    data.readAsDataURL(e.target.files[0]);
+  }
+
+  // ---------------------------- for photo 2 ----------------------------
+  const convertIntoBase642 = (e) => {
+    // console.log(e.target.files);
+    const data = new FileReader();
+    
+    data.addEventListener('load', ()=>{
+      setimgS2(data.result);
+    })
+    data.readAsDataURL(e.target.files[0]);
+  }
+
 
   const signUp = () => {
     let registration_no = document.getElementById('sreg_no').value;
@@ -19,32 +48,56 @@ const SignUp = () => {
     let pincode = document.getElementById('spincode').value;
     let allowed = document.getElementById('sallowed').value;
     let denied = document.getElementById('sdenied').value;
-    let photo1 = document.getElementById('sphoto1').value;
-    // let imgData = canvasElement.toDataURL(photo1);
-    // let photo2 = document.getElementById('sphoto2');
 
-    console.log(registration_no);
-    console.log(name);
-    console.log(father_name);
-    console.log(email);
-    console.log(roll_no);
-    console.log(department);
-    console.log(state);
-    console.log(district);
-    console.log(pincode);
-    console.log(phone_no);
-    console.log(semester);
-    console.log(photo1);
-    // console.log('ImgData :', imgData)
-    // console.log(photo2);
-    console.log(allowed);
-    console.log(denied);
-    alert("You have signed up");
+    let data = [registration_no, name, father_name, email, roll_no, department, state, 
+                  district, pincode, phone_no, semester, allowed, denied, imgS, imgS2 ];
+    
+    // Check two photo of a candidate added or not 
+    //         if No, then run this if condition
+    if (imgS === undefined || imgS2 === undefined ) {
+      alert("Please add two photos of a candidate!!!");
+      document.getElementById('sphoto1').value = null;
+      document.getElementById('sphoto2').value = null;
+    } 
+    //       if Yes. then run this else condition.
+    else {
+      let txt = '';
+      if (window.confirm("Yes, I want to create an account.")) {
+        txt = "OK";
+      } else {
+        txt = "Cancel";
+      }
+
+      if (txt === 'OK') {
+
+        console.log(data);
+        // Sending data to python backend from frontend
+        const sendDataToBackend =  async(data) => {
+          // data.preventDefault();    
+          try {
+            const response = await axios.post('http://127.0.0.1:8000/', data);  
+            receivedData(response.data);
+            console.log(response.data); // Response from Django backend
+          } catch (error) {
+            console.error('Error sending data to backend:', error);
+          }
+        };
+
+        sendDataToBackend(data);
+      } 
+      else {
+        alert("You have canceled it!")
+      }
+      // console.log(received);
+      // alert("You have signed up");
+    }
+
   }
+
 
   return (
     <>
-    <form action='' id="signupForm" className="signup-form">
+    <div className="signup-form">
       <div className="signup-form__top">
         <h1 className='gradient__text'>Sign Up</h1>
         <div className="signup-form__top-field">
@@ -98,8 +151,8 @@ const SignUp = () => {
           <label className='gradient__text'>Denied</label>
         </div>
         <div className="signup-form__bottom-inputs">
-          <input type="file" id="sphoto1" name="sphoto1"/>
-          <input type="file" id="sphoto1" name="sphoto1"/>
+          <input type="file" id="sphoto1" name="sphoto1" onChange={convertIntoBase64}/>
+          <input type="file" id="sphoto2" name="sphoto2" onChange={convertIntoBase642}/>
           <input className="signup-form__bottom-access" type="radio" id="sallowed" name="saccess" value="allowed"/>
           <input className="signup-form__bottom-access" type="radio" id="sdenied" name="saccess" value="denied"/>
         </div>
@@ -111,7 +164,7 @@ const SignUp = () => {
             <span role='img' aria-label='go to sign in page'>👈👈</span>
         </Link>
       </div>
-    </form>
+    </div>
     </>
   )
 }

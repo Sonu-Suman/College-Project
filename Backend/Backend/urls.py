@@ -20,4 +20,5 @@ from . import view
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', view.receive_data, name="receive_data"),
+    path('take/', view.send_data, name='get_students'),
 ]

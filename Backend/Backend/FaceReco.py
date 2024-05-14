@@ -5,6 +5,7 @@ import numpy as np
 import face_recognition
 import io
 from PIL import Image
+import base64
 
 
 # --------------------------- For Webcam ---------------------------------------------
@@ -20,24 +21,17 @@ from PIL import Image
 # ------------------------ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -------------------------------------
 
 class Facereco:
-    def recognization(Img):
+    def recognization(encoded):
 
-        # Import the encode file from EncodeGenerator.py program file
+        # Import the encode file from EncodeGenerator.py program file -----------------------------
         file = open("C:/Users/HP/React/Testing/Backend/Backend/encodelist.p", 'rb')
         encodeListKnownWithId = pickle.load(file)
         file.close()
         encodeListKnown, studentIds = encodeListKnownWithId
-        # print(studentIds)
+        # print(studentIds) -----------------------------------------------------------
 
 
-        # while True:
-            # ------------------ For Webcam ------------------------------------------------------
-            # success, img = cap.read()
-            # if not success:
-            #     print("Can't receive frame (stream end?). Exiting ...")
-            #     break
-            # -------------------  xxxxxxxxxxxxxxxxx ---------------------------------------------
-            # img = cv2.imread("C:/Users/HP/React/Testing/Backend/foo.jpeg")
+        Img = base64.b64decode(str(encoded))
         img = Image.open(io.BytesIO(Img))
         img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
 
@@ -48,6 +42,8 @@ class Facereco:
 
         faceCurFrame = face_recognition.face_locations(imgS)
         encodeCurFrame = face_recognition.face_encodings(imgS, faceCurFrame)
+
+        student_id = 0
 
         for encodeface, faceloc in zip(encodeCurFrame, faceCurFrame):
             matches = face_recognition.compare_faces(encodeListKnown, encodeface)
@@ -60,12 +56,14 @@ class Facereco:
                 y1, x2, y2, x1 = y1*4, x2*4, y2*4, x1*4
                 bbox = x1, y1, x2-x1, y2-y1
                 img = cvzone.cornerRect(img, bbox=bbox, rt=0)
-                print("Matched student name : ", studentIds[matchId])
-            else:
-                print("You are not registered in the database.")
+                student_id = studentIds[matchId]
+
+                return student_id
+
+        return student_id
 
 
-        cv2.imshow("Face Recognition system", img)
+        # cv2.imshow("Face Recognition system", img)
         # if cv2.waitKey(1) == ord('q'):
         #     break
 
