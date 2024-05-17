@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './collegesignup.css'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
 
 
 const CollegeSignUp = () => {
-
+    const navigate = useNavigate();
     // For receving data from python backend
     const [students, setStudents] = useState([]);
 
@@ -22,6 +22,18 @@ const CollegeSignUp = () => {
   
     console.log(students);
 
+    const Reset = () => {
+        document.getElementById('cname').value = null;
+        document.getElementById('cregistration').value = null;
+        document.getElementById('cpname').value = null;
+        document.getElementById('cemail').value = null;
+        document.getElementById('cdistrict').value = null;
+        document.getElementById('cpincode').value = null;
+        document.getElementById('cphone').value = null;
+        document.getElementById('cstate').value = null;
+        document.getElementById('cregisteredcamera').value = null;
+    }
+
     const collegeRegister = () => {
         // Accessing all data from HTML backend
         let college_name = document.getElementById('cname').value;
@@ -33,20 +45,11 @@ const CollegeSignUp = () => {
         let phone = document.getElementById('cphone').value;
         let state = document.getElementById('cstate').value;
         let total_registered_camera = document.getElementById('cregisteredcamera').value;
-        let pass1 = document.getElementById('cpassword').value;
-        let pass2 = document.getElementById('cconfirmpassword').value;
 
-        // For matching password in both field
-        if (pass1 !== pass2) {
-            alert('Please enter same password in both fields!!!!!');
-            document.getElementById('cpassword').value = '';
-            document.getElementById('cconfirmpassword').value = '';
-            return;
-        }
         
         // For storing all data in a javascript array.
         let data = [college_name, registration_no, principal_name, email, district, pin_code, phone, state,
-                             total_registered_camera, pass1, pass2];
+                             total_registered_camera];
 
         console.log(data);
         
@@ -55,6 +58,7 @@ const CollegeSignUp = () => {
             try {                           // implementing error cathing 
               const response = await axios.post('http://127.0.0.1:8000/', data);       // This is Backend server link
               console.log(response.data); // Response from Django backend
+              Reset();
             } catch (error) {
               console.error('Error sending data to backend:', error);
             }
@@ -62,6 +66,7 @@ const CollegeSignUp = () => {
           
         sendDataToBackend(data);             // Sending data to backend server
         alert("Your information successfully submitted!!!!!!!!!");
+        navigate('/CameraRegistration');
     }
 
     
@@ -69,7 +74,7 @@ const CollegeSignUp = () => {
     <>
       <div className="college_registration-form">
         <div className="college_registration-form__top">
-            <h1 className='gradient__text'>College <br /> Registration Form</h1>
+            <h1 className='gradient__text'>College <br /> Registration Page</h1>
             <div className="college_registration-form__top-field">
                 <div className="college_registration-form__top-field-labels">
                     <label className='gradient__text'>College Name :</label>
@@ -110,18 +115,14 @@ const CollegeSignUp = () => {
         <div className="college_registration-form__bottom">
             <div className="college_registration-form__bottom-labels">
                 <label className='gradient__text'>Total Registered Camera :</label>
-                <label className='gradient__text'>Password :</label>
-                <label className='gradient__text'>Confirm Password :</label>
             </div>
             <div className="college_registration-form__bottom-inputs">
                 <input type="number" id='cregisteredcamera' name='cregisteredcamera'/>
-                <input type="password" id='cpassword' name='cpassword'/>
-                <input type="password" id='cconfirmpassword' name='cconfirmpassword'/>
             </div>
         </div>
         <div className="college_registration-form__submit">
             <button onClick={collegeRegister}>Submit</button>
-            <Link className='college_registration-from__submit-link' to='../Login'>Already have a account
+            <Link className='college_registration-from__submit-link' to='../StudentRegister'>Already have a account
                 <span role='img' aria-label='go to sign in page'>👈👈</span>
             </Link>
         </div>

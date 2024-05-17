@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import './signup.css'
+import './studentregister.css'
 import { Link } from "react-router-dom"
 import axios from 'axios';
 
@@ -35,6 +35,7 @@ const SignUp = () => {
 
 
   const signUp = () => {
+    let college_id = document.getElementById('scollege_id').value;
     let registration_no = document.getElementById('sreg_no').value;
     let name = document.getElementById('sname').value;
     let father_name = document.getElementById('sfname').value;
@@ -46,11 +47,10 @@ const SignUp = () => {
     let semester = document.getElementById('ssemester').value;
     let district = document.getElementById('sdistrict').value;
     let pincode = document.getElementById('spincode').value;
-    let allowed = document.getElementById('sallowed').value;
-    let denied = document.getElementById('sdenied').value;
+    let access = document.querySelector('input[name="saccess"]:checked').value;
 
     let data = [registration_no, name, father_name, email, roll_no, department, state, 
-                  district, pincode, phone_no, semester, allowed, denied, imgS, imgS2 ];
+                  district, pincode, phone_no, semester, access, imgS, imgS2, college_id ];
     
     // Check two photo of a candidate added or not 
     //         if No, then run this if condition
@@ -59,9 +59,10 @@ const SignUp = () => {
       document.getElementById('sphoto1').value = null;
       document.getElementById('sphoto2').value = null;
     } 
-    //       if Yes. then run this else condition.
-    else {
+    else {                                     //       if Yes. then run this else condition.
       let txt = '';
+      // Now, I am again asking permission from candidate for creating account in system.
+      //          if Yes, then run this condition
       if (window.confirm("Yes, I want to create an account.")) {
         txt = "OK";
       } else {
@@ -69,7 +70,6 @@ const SignUp = () => {
       }
 
       if (txt === 'OK') {
-
         console.log(data);
         // Sending data to python backend from frontend
         const sendDataToBackend =  async(data) => {
@@ -85,13 +85,13 @@ const SignUp = () => {
 
         sendDataToBackend(data);
       } 
+      //            If candidate canceled the permission. then this condition run by program.
       else {
         alert("You have canceled it!")
       }
       // console.log(received);
       // alert("You have signed up");
     }
-
   }
 
 
@@ -99,14 +99,16 @@ const SignUp = () => {
     <>
     <div className="signup-form">
       <div className="signup-form__top">
-        <h1 className='gradient__text'>Sign Up</h1>
+        <h1 className='gradient__text'>Student <br /> Registration Page</h1>
         <div className="signup-form__top-field">
           <div className="signup-form__top-field-labels">
+          <label className='gradient__text'>College ID :</label>
             <label className='gradient__text'>Reg. No. :</label>
             <label className='gradient__text'>Name :</label>
             <label className='gradient__text'>Father Name :</label>
           </div>
           <div className="signup-form__top-field-inputs">
+            <input type="text" id="scollege_id" name="scollege_id" />
             <input type="text" id="sreg_no" name="sreg_no" />
             <input type="text" id="sname" name="sname"/>
             <input type="text" id="sfname" name="sfname"/>
@@ -151,8 +153,8 @@ const SignUp = () => {
           <label className='gradient__text'>Denied</label>
         </div>
         <div className="signup-form__bottom-inputs">
-          <input type="file" id="sphoto1" name="sphoto1" onChange={convertIntoBase64}/>
-          <input type="file" id="sphoto2" name="sphoto2" onChange={convertIntoBase642}/>
+          <input type="file" accept='.jpeg, .png, .jpg' id="sphoto1" name="sphoto1" onChange={convertIntoBase64}/>
+          <input type="file" accept='.jpeg, .png, .jpg' id="sphoto2" name="sphoto2" onChange={convertIntoBase642}/>
           <input className="signup-form__bottom-access" type="radio" id="sallowed" name="saccess" value="allowed"/>
           <input className="signup-form__bottom-access" type="radio" id="sdenied" name="saccess" value="denied"/>
         </div>
@@ -160,7 +162,7 @@ const SignUp = () => {
       <div className="signup-form__submit">
         <button onClick={signUp}>Sign Up</button>
         {/* <button type='signUp'>Sign Up</button> */}
-        <Link className='signup-form__submit-login' to='../Login'>Already have a account
+        <Link className='signup-form__submit-login' to='/CollegeRegistration'>Don't have a account
             <span role='img' aria-label='go to sign in page'>👈👈</span>
         </Link>
       </div>

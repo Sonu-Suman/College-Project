@@ -50,7 +50,7 @@ const CameraRegister = () => {
     <>
       <div className="camera_registration-form">
         <div className="camera_registration-form__top">
-            <h1 className='gradient__text'>Register Camera</h1>
+            <h1 className='gradient__text'>Connect Camera</h1>
             <div className="camera_registration-form__top-field">
                 <div className="camera_registration-from__top-field-labels">
                     <label className='gradient__text'>Camera ID :</label>

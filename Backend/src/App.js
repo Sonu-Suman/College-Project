@@ -1,6 +1,6 @@
 import React from 'react'
-import {Navbar, CTA, Service, SignUp, Login, CollegeSignUp, CameraRegister} from './components/index.js';
-import {Header, Footer} from './container/index.js';
+import {Navbar, CTA, Service, StudentRegister, Login, CollegeSignUp, CameraRegister} from './components/index.js';
+import {Header, Footer, ShowData, Collegeseedata} from './container/index.js';
 import './app.css';
 import {
   BrowserRouter as Router,
@@ -26,10 +26,12 @@ const App = (props) => {
         {/* <Route path='/' element={content} /> */}
         <Route path='/' element={<Header />} />
         <Route path='/Service' element={<Service />} />
-        <Route path='/SignUp' element={<SignUp />} />
+        <Route path='/StudentRegister' element={<StudentRegister />} />
         <Route path='/CollegeRegistration' element={<CollegeSignUp />} />
         <Route path='/CameraRegistration' element={<CameraRegister />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='/showdata' element={<ShowData />} />
+        <Route path='/seedata' element={<Collegeseedata />} />
       </Routes>
       <CTA />
       <Footer />

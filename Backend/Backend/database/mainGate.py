@@ -1,6 +1,6 @@
 import mysql.connector
 import datetime
-import FireBaseI
+import FireBaseI as fbi
 
 
 mydb = mysql.connector.connect(host='localhost', user='root', passwd='1234', database='project')
@@ -13,7 +13,7 @@ mycursor.execute(f"SELECT students.Registration_Id, students.College_id, cameras
 
 for data in mycursor.fetchall():
     if data[2] == 'class':           # We need to change this value in 'main_gate'
-        set_value = FireBaseI.StudentData(data[0], data[2])
+        set_value = fbi.StudentData(data[0], data[2])
         set_value.add_main_gate_data(datetime.date.today(), datetime.datetime.now().strftime("%H:%M:%S"),
                               datetime.datetime.now().strftime("%H:%M:%S"))
 

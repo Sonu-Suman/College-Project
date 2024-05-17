@@ -1,0 +1,125 @@
+* {
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.collegeseedata-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem;
+}
+
+.collegeseedata-from__submit-form {
+    margin: 2rem;
+}
+
+.collegeseedata-form__submit-form-header {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.collegeseedata-form__submit-form-labels-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 2rem 0;
+}
+
+.collegeseedata-form__submit-form-labels-inputs-date {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 1rem 0;
+}
+
+.collegeseedata-form__submit-form-labels-inputs-date label {
+    color: white;
+    font-size: 14px;
+    margin-right: -0.4rem;
+}
+
+.collegeseedata-form__submit-form-labels-inputs-date input {
+    width: 125px;
+    height: 11px;
+    font-size: 11px
+}
+
+.collegeseedata-form__submit-form-labels-inputs-date-start {
+    margin-right: 2rem;
+}
+
+.collegeseedata-form__submit-form-labels-inputs-date-end {
+    margin-left: 2rem;
+}
+
+.collegeseedata-form__submit-button {
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.collegeseedata-form__submit-link {
+    text-decoration: underline;
+    color: white;
+}
+
+.collegeseedata-form__data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.collegeseedata-form__data-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.collegeseedata-form__data-top-left img {
+    width: 240px;
+    height: 240px;
+    border-radius: 10rem;
+    margin: 0 2rem;
+}
+
+.collegeseedata-form__data-top-right {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.collegeseedata-form__data-top-right-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.collegeseedata-form__data-top-right-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.collegeseedata-form__data-top-right-inputs input {
+    color: white;
+    font-weight: bolder;
+    padding: 0 1rem;
+    background: linear-gradient(
+        to right bottom,
+      rgb(78, 93, 116),
+      rgb(157, 167, 139)
+    );
+}
+
+.collegeseedata-form__middle {
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.collegeseedata-form__middle-table-body {
+    color: white;
+}

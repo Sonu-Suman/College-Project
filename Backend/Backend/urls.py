@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import view
-from database import classattendance
+
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', view.receive_data, name="receive_data"),
     path('take/', view.send_data, name='get_students'),
+    path('login/', view.Login_Api, name='login_user')
 ]
