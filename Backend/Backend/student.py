@@ -20,8 +20,6 @@ mycursor = mydb.cursor()
     `District` VARCHAR(255) NOT NULL,
     `State` VARCHAR(255) NOT NULL,
     `Pin_code` INT NOT NULL,
-    `picture1` MEDIUMBLOB NOT NULL,
-    `picture2` MEDIUMBLOB NOT NULL,
     `access` BOOLEAN NOT NULL (0 -> now allowed, 1 -> allowed)
 """
 
@@ -33,13 +31,13 @@ class StudentData:
 
 
     def register(self, name, registration_id, father_name, roll_no, phone_no, semester, email,
-                             department, college_id, district, state, pin_code, photo1, photo2, access):
+                             department, college_id, district, state, pin_code, access, photo1=None, photo2=None):
 
         mycursor.execute(f"INSERT INTO students(`Student_name`, `Registration_Id`, `Father_name`, `Roll_no`, `Phone_no`, `Semester`, "
-                            f"`Email`, `Department`, `College_id`, `District`, `State`, `Pin_code`, `picture1`, `picture2`, `access`) "
+                            f"`Email`, `Department`, `College_id`, `District`, `State`, `Pin_code`, `access`) "
                             f"VALUES('{name}', {registration_id}, '{father_name}', '{roll_no}', {phone_no}, {semester}, "
                             f"'{email}', '{department}', {college_id}, '{district}', '{state}', '{pin_code}', "
-                            f"'{photo1}', '{photo2}', {access})"
+                            f" {access})"
                         )
         mydb.commit()
 

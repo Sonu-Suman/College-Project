@@ -31,18 +31,18 @@ def receive_data(request):
             return JsonResponse(fb.show_class_attendance_data(college_id=int(data[0]), registration=int(data[1])), safe=False)
 
         # --------------------------------------------------------------------------
-        elif type(data) == list and len(data) == 15:                  # This condition for student registration page
+        elif type(data) == list and len(data) == 13:                  # This condition for student registration page
             # print(data)
             College_Id = 23007
 
-            # This is registrar id = int(data[14])
+            # This is registrar id = int(data[12])
             access = False
             if data[11] == "allowed":
                 access = True
 
             st.register(name=data[1], registration_id=int(data[0]), father_name=data[2], email=data[3], roll_no=data[4],
                             department=data[5], state=data[6], district=data[7], pin_code=int(data[8]), phone_no=int(data[9]),
-                            semester=int(data[10]), access=access, photo1=data[12], photo2=data[13], college_id=College_Id
+                            semester=int(data[10]), access=access, college_id=College_Id
                         )
 
             return JsonResponse(list(student), safe=False)

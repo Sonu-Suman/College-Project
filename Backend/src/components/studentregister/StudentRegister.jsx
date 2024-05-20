@@ -1,38 +1,10 @@
-import React, { useState} from 'react'
+import React from 'react'
 import './studentregister.css'
 import { Link } from "react-router-dom"
 import axios from 'axios';
 
 
 const SignUp = () => {
-  const [imgS, setimgS] = useState();
-  const [imgS2, setimgS2] = useState();
-
-  // For receving data from python backend
-  let [received, receivedData] = useState(null);
-
-  // ----------------------------- for photo1 ------------------------
-  const convertIntoBase64 = (e) => {
-    // console.log(e.target.files);
-    const data = new FileReader();
-    
-    data.addEventListener('load', ()=>{
-      setimgS(data.result);
-    })
-    data.readAsDataURL(e.target.files[0]);
-  }
-
-  // ---------------------------- for photo 2 ----------------------------
-  const convertIntoBase642 = (e) => {
-    // console.log(e.target.files);
-    const data = new FileReader();
-    
-    data.addEventListener('load', ()=>{
-      setimgS2(data.result);
-    })
-    data.readAsDataURL(e.target.files[0]);
-  }
-
 
   const signUp = () => {
     let college_id = document.getElementById('scollege_id').value;
@@ -47,19 +19,19 @@ const SignUp = () => {
     let semester = document.getElementById('ssemester').value;
     let district = document.getElementById('sdistrict').value;
     let pincode = document.getElementById('spincode').value;
-    let access = document.querySelector('input[name="saccess"]:checked').value;
-
-    let data = [registration_no, name, father_name, email, roll_no, department, state, 
-                  district, pincode, phone_no, semester, access, imgS, imgS2, college_id ];
+                  
     
-    // Check two photo of a candidate added or not 
-    //         if No, then run this if condition
-    if (imgS === undefined || imgS2 === undefined ) {
-      alert("Please add two photos of a candidate!!!");
-      document.getElementById('sphoto1').value = null;
-      document.getElementById('sphoto2').value = null;
-    } 
-    else {                                     //       if Yes. then run this else condition.
+    if (college_id !== null || registration_no !== null || name !== null || father_name !== null ||
+          email !== null || roll_no !== null || department !== null || state !== null || 
+          phone_no !== null || semester !== null || district !== null || pincode !== null) {
+
+          alert("Please provide all informations correctly.");
+    } else {
+      let access = document.querySelector('input[name="saccess"]:checked').value;
+
+      let data = [ registration_no, name, father_name, email, roll_no, department, state, 
+                  district, pincode, phone_no, semester, access, college_id ];
+
       let txt = '';
       // Now, I am again asking permission from candidate for creating account in system.
       //          if Yes, then run this condition
@@ -68,7 +40,7 @@ const SignUp = () => {
       } else {
         txt = "Cancel";
       }
-
+  
       if (txt === 'OK') {
         console.log(data);
         // Sending data to python backend from frontend
@@ -76,22 +48,22 @@ const SignUp = () => {
           // data.preventDefault();    
           try {
             const response = await axios.post('http://127.0.0.1:8000/', data);  
-            receivedData(response.data);
             console.log(response.data); // Response from Django backend
           } catch (error) {
             console.error('Error sending data to backend:', error);
           }
         };
-
+  
         sendDataToBackend(data);
       } 
-      //            If candidate canceled the permission. then this condition run by program.
+      // If candidate canceled the permission. then this condition run by program.
       else {
         alert("You have canceled it!")
       }
       // console.log(received);
       // alert("You have signed up");
     }
+
   }
 
 
@@ -153,8 +125,8 @@ const SignUp = () => {
           <label className='gradient__text'>Denied</label>
         </div>
         <div className="signup-form__bottom-inputs">
-          <input type="file" accept='.jpeg, .png, .jpg' id="sphoto1" name="sphoto1" onChange={convertIntoBase64}/>
-          <input type="file" accept='.jpeg, .png, .jpg' id="sphoto2" name="sphoto2" onChange={convertIntoBase642}/>
+          <input type="file" accept='.jpeg, .png, .jpg' id="sphoto1" name="sphoto1"/>
+          <input type="file" accept='.jpeg, .png, .jpg' id="sphoto2" name="sphoto2"/>
           <input className="signup-form__bottom-access" type="radio" id="sallowed" name="saccess" value="allowed"/>
           <input className="signup-form__bottom-access" type="radio" id="sdenied" name="saccess" value="denied"/>
         </div>

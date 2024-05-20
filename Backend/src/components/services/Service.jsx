@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import axios from 'axios';
 import  './service.css'
-// We can also implement webcamera by using AllCameras.js or Camera.js
+
 
 
 const Service = () => {
-
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -43,7 +42,7 @@ const Service = () => {
         try {
           setTimeout(() => {
             videoElement.play();
-          }, 100);
+          }, 0);
         } catch (error) {
           alert(error.toString);
           console.error('Error playing video:', error);
@@ -66,7 +65,7 @@ const Service = () => {
       }
     };
 
-  }, [1000]);
+  }, []);
 
 
   return (
@@ -74,11 +73,12 @@ const Service = () => {
 
       {/* ---------------------------------     For acceessing webcamera and livecasting the footage    ----------------------------  */}
       <h1>Please Wait...... <br />I am loading your data...........</h1>
+      <hr />
       <video ref={videoRef} style={{ width:640, height:480 }}></video>
-      <canvas ref={canvasRef} style={{ display: 'none' }} width={640} height={480}></canvas>
+      <canvas ref={canvasRef} style={{ display: 'flex' }} width={640} height={480}></canvas>
 
       {/* ---------------------------------          END        -----------------------------------------------  */}
-      
+
     </div>
   )
 }
