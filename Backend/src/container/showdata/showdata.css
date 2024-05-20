@@ -10,6 +10,51 @@
     align-items: center;
 }
 
+.data-form__submit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.data-form__submit-form-labels-inputs {
+    margin: 2rem 0;
+}
+
+.data-form__submit-form-labels-inputs-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.data-form__submit-form-labels-inputs-date label {
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.data-form__submit-form-labels-inputs-date input {
+    width: 150px;
+    font-size: 12px;
+    height: 20px;
+}
+
+.data-form__submit-form-labels-inputs-date-start {
+    margin-left: 15rem;
+    margin-right: 28rem;
+}
+
+.data-form__show {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-form__show-tag h1 {
+    font-size: 5rem;
+}
+
 .data-form__top {
     display: flex;
     flex-direction: row;

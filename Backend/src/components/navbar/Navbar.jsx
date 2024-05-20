@@ -5,15 +5,6 @@ import idea from '../../assets/idea.png'
 import { Link, useNavigate } from "react-router-dom"
 
 
-const Menu = () => (
-                      <>
-                        <p><Link to="/">Home</Link></p>
-                        <p><Link to='/Service'>Services</Link></p>
-                        <p><Link to='/'>Learn</Link></p>
-                        <p><Link to='/'>Case studies</Link></p>
-                      </>
-                    )
-
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -31,7 +22,7 @@ const Navbar = () => {
     
     if (text === 'yes') {
       // return <Redirect to='/Service' title='service' />;
-      navigate('/Service');
+      navigate('/showdata');
     } else if (text === 'no') {
       navigate('/seedata');
     }else {
@@ -39,6 +30,16 @@ const Navbar = () => {
       // AskService();
     }
   }
+
+
+  const Menu = () => (
+                        <>
+                          <p><Link to="/">Home</Link></p>
+                          <p onClick={AskService}>Services</p>
+                          <p><Link to='/'>Learn</Link></p>
+                          <p><Link to='/Service'>Demo</Link></p>
+                        </>
+                      )
 
 
   return (
@@ -51,7 +52,7 @@ const Navbar = () => {
           <p><Link to="/" title='home'>Home</Link></p>
           <p onClick={AskService}>Services</p>
           <p><Link to='/'>Learn</Link></p>
-          <p><Link to='/'>Case studies</Link></p>
+          <p><Link to='/Service'>Demo</Link></p>
         </div>
       </div>
       <div className="trader__navbar-sign">
